@@ -3,7 +3,7 @@
 int main() {
     float a, b, x;
 
-    printf("Nhap he so a (a != 0): ");
+    printf("Nhap he so a (a khac 0): ");
     scanf("%f", &a);
 
     printf("Nhap he so b: ");
