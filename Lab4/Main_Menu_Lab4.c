@@ -95,7 +95,33 @@ int main()
             break;
 
         case 3:
-            // Goi chuong trinh chuc nang 3
+            int x;
+            int dk = 0;
+            printf("Hay nhap 1 so nguyen x: ");
+            scanf("%d", &x);
+
+            if (x < 0)
+            {
+                printf("Day khong phai la so chinh phuong");
+                return 0;
+            }
+            else if (x >= 0)
+            {
+                for (int i = 0; i <= x; i++)
+                {
+                    if (x == i * i)
+                    {
+                        printf("Day la so chinh phuong");
+                        dk++;
+                        break;
+                    }
+                }
+            }
+
+            if (dk == 0)
+            {
+                printf("Day khong phai la so chinh phuong");
+            }
             break;
 
         case 4:
