@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define PI 3.14159
+#define PI 3.14159;
 int main(){
     int d,r,bk;
     printf("hay nhap chieu dai va rong: ");

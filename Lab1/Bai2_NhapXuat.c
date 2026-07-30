@@ -9,7 +9,7 @@ int main() {
     scanf("%d", &MSSV);
 
     printf("Nhap ho va ten: ");
-    scanf(" %[^\n]", Ten);   // Nhập cả họ tên có khoảng trắng
+    scanf(" %[^\n]", Ten);   
 
     printf("Nhap nam sinh: ");
     scanf("%d", &NS);
