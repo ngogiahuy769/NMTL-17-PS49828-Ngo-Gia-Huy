@@ -7,7 +7,10 @@ void chucNang1();
 void chucNang2();
 void chucNang3();
 void chucNang4();
-int solonNhat( int a, int b, int c);
+int solonNhat(int a, int b, int c);
+bool kiemtraNamnhuan(int nam);
+void swap(int *a, int *b);
+char *checkTriangle(float a, float b, float c);
 
 int main()
 {
@@ -66,17 +69,21 @@ void menu()
 
 void chucNang1()
 {
-    int a,b,c;
+    int a, b, c;
     printf("Nhap a,b,c: ");
-    scanf("%d%d%d",&a,&b,&c);
-    printf("So lon nhat la %d\n",solonNhat(a,b,c));
+    scanf("%d%d%d", &a, &b, &c);
+    printf("So lon nhat la %d\n", solonNhat(a, b, c));
 }
 
-int solonNhat(int a, int b, int c){
+int solonNhat(int a, int b, int c)
+{
     int lonNhat = a;
-    if(lonNhat<b){
+    if (lonNhat < b)
+    {
         lonNhat = b;
-    }else if(lonNhat < c){
+    }
+    else if (lonNhat < c)
+    {
         lonNhat = c;
     }
     return lonNhat;
@@ -84,15 +91,88 @@ int solonNhat(int a, int b, int c){
 
 void chucNang2()
 {
-    
+    int nam;
+    printf("Hay nhap vao nam: ");
+    scanf("%d", &nam);
+    if (kiemtraNamnhuan(nam))
+    {
+        printf("Nam %d la nam nhuan\n", nam);
+    }
+    else
+    {
+        printf("Nam %d khong phai nam nhuan\n", nam);
+    }
+}
+
+bool kiemtraNamnhuan(int nam)
+{
+    if (nam % 400 == 0 || (nam % 4 == 0 && nam % 100 != 0))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 void chucNang3()
 {
-    printf("\nBan da chon Chuc nang 3.\n");
+    int x, y;
+    printf("Hay nhap hai so x va y: ");
+    scanf("%d%d", &x, &y);
+    printf("Truoc khi hoan vi x la %d va y la %d\n", x, y);
+    swap(&x, &y);
+    printf("Sau khi hoan vi x la %d va y la %d\n", x, y);
+}
+
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 void chucNang4()
 {
-    printf("\nBan da chon Chuc nang 4.\n");
+    int a,b,c;
+    printf("Nhap 3 canh cua tam giac: ");
+    scanf("%d%d%d",&a,&b,&c);
+    printf("%s\n",checkTriangle(a,b,c));
+}
+
+char *checkTriangle(float a, float b, float c)
+{
+    if (a + b > c && a + c > b && b + c > a && a > 0 && b > 0 && c > 0)
+    {
+        if (a == b && b == c)
+        {
+            return "Tam giac deu";
+        }
+        else if (a * a + b * b == c * c ||
+                 a * a + c * c == b * b ||
+                 b * b + c * c == a * a)
+        {
+            if (a == b || a == c || b == c)
+            {
+                return "Tam giac vuong can";
+            }
+            else
+            {
+                return "Tam giac vuong";
+            }
+        }
+        else if (a == b || a == c || b == c)
+        {
+            return "Tam giac can";
+        }
+        else
+        {
+            return "Tam giac thuong";
+        }
+    }
+    else
+    {
+        return "Khong phai la 3 canh cua tam giac";
+    }
 }
