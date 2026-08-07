@@ -41,7 +41,7 @@ void timMaxMin(int a[], int n)
 {
     int max = a[0];
     int min = a[0];
-    for (int i = 1; i <= n - 1; i++)
+    for (int i = 1; i < n - 1; i++)
     {
         if (a[i] > max)
         {
@@ -108,7 +108,6 @@ void xuatSoLeMaTran(int row, int col)
     int mt[10][10];
     int count = 0;
 
-    /* Nhap ma tran */
     printf("Nhap cac phan tu cho ma tran %d x %d:\n", row, col);
     for (int i = 0; i < row; i++)
     {
