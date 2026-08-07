@@ -60,16 +60,14 @@ void sapXepChuoi()
     char temp[50];
 
     printf("\n=== CHỨC NĂNG SẮP XẾP CHUỖI ALPHABET ===\n");
-    
-   
+
     for (int i = 0; i < 5; i++)
     {
         printf("Nhập chuỗi thứ %d: ", i + 1);
         fgets(s[i], sizeof(s[i]), stdin);
-        s[i][strcspn(s[i], "\n")] = '\0'; // Xóa dấu xuống dòng
+        s[i][strcspn(s[i], "\n")] = '\0';
     }
 
-   
     for (int i = 0; i < 4; i++)
     {
         for (int j = i + 1; j < 5; j++)
@@ -83,13 +81,49 @@ void sapXepChuoi()
         }
     }
 
-    
     printf("\n--- Danh sách sau khi sắp xếp Alphabet ---\n");
     for (int i = 0; i < 5; i++)
     {
         printf("%d. %s\n", i + 1, s[i]);
     }
-} 
+}
+
+void thapPhanSangNhiPhan()
+{
+    int n;
+    char nhiPhan[50] = "";
+    int index = 0;
+
+    printf("\n=== CHỨC NĂNG CHUYỂN THẬP PHÂN SANG NHỊ PHÂN ===\n");
+    printf("Nhập một số nguyên dương thập phân: ");
+    scanf("%d", &n);
+
+    if (n <= 0)
+    {
+        printf("Vui lòng nhập số nguyên dương (> 0)!\n");
+        return;
+    }
+
+    int tempN = n; // Lưu lại giá trị ban đầu để in thông báo
+
+    // 1. Chia lấy dư cho 2 và lưu phần dư thành ký tự '0' hoặc '1' vào chuỗi
+    while (tempN > 0)
+    {
+        int du = tempN % 2;
+        nhiPhan[index++] = du + '0'; // Chuyển số dư (0 hoặc 1) sang ký tự ('0' hoặc '1')
+        tempN /= 2;
+    }
+    nhiPhan[index] = '\0'; // Đánh dấu kết thúc chuỗi
+
+    // 2. In ngược chuỗi nhiPhan thu được để có kết quả chính xác
+    printf("Số thập phân %d sang nhị phân là: ", n);
+    for (int i = index - 1; i >= 0; i--)
+    {
+        printf("%c", nhiPhan[i]);
+    }
+    printf("\n");
+}
+
 int main()
 {
     int chon;
@@ -107,7 +141,7 @@ int main()
         printf("+---------------------------------------------------+\n");
         printf(">> Xin moi chon chuc nang (1-5): ");
         scanf("%d", &chon);
-        getchar(); // Đọc bỏ ký tự '\n' còn sót lại
+        getchar();
 
         switch (chon)
         {
@@ -120,7 +154,11 @@ int main()
             break;
 
         case 3:
-            sapXepChuoi(); 
+            sapXepChuoi();
+            break;
+
+        case 4:
+            thapPhanSangNhiPhan();
             break;
 
         case 5:
