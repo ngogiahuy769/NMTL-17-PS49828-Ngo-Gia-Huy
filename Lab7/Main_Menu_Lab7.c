@@ -37,11 +37,13 @@ void kiemTraDangNhap()
     char passSys[] = "123456";
     char user[50];
     char pass[50];
-    printf("\nCHỨC NĂNG DĂNG NHẬP\n");
+
+    printf("\nCHỨC NĂNG ĐĂNG NHẬP\n");
     printf("Nhập Username: ");
     scanf("%s", user);
     printf("Nhập Password: ");
     scanf("%s", pass);
+
     if (strcmp(user, userSys) == 0 && strcmp(pass, passSys) == 0)
     {
         printf("-> Đăng nhập thành công!\n");
@@ -51,16 +53,51 @@ void kiemTraDangNhap()
         printf("-> Username hoặc Password không chính xác!\n");
     }
 }
-}
 
+void sapXepChuoi()
+{
+    char s[5][50];
+    char temp[50];
+
+    printf("\n=== CHỨC NĂNG SẮP XẾP CHUỖI ALPHABET ===\n");
+    
+   
+    for (int i = 0; i < 5; i++)
+    {
+        printf("Nhập chuỗi thứ %d: ", i + 1);
+        fgets(s[i], sizeof(s[i]), stdin);
+        s[i][strcspn(s[i], "\n")] = '\0'; // Xóa dấu xuống dòng
+    }
+
+   
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = i + 1; j < 5; j++)
+        {
+            if (strcmp(s[i], s[j]) > 0)
+            {
+                strcpy(temp, s[i]);
+                strcpy(s[i], s[j]);
+                strcpy(s[j], temp);
+            }
+        }
+    }
+
+    
+    printf("\n--- Danh sách sau khi sắp xếp Alphabet ---\n");
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d. %s\n", i + 1, s[i]);
+    }
+} 
 int main()
 {
     int chon;
 
     do
     {
-        printf("+---------------------------------------------------+\n");
-        printf("|             MENU CHUONG TRINH LAB 7               |\n");
+        printf("\n+---------------------------------------------------+\n");
+        printf("|              MENU CHUONG TRINH LAB 7              |\n");
         printf("+---------------------------------------------------+\n");
         printf("| 1. Dem nguyen am va Phu am trong chuoi            |\n");
         printf("| 2. Dang nhap he thong (User & Password)           |\n");
@@ -70,7 +107,8 @@ int main()
         printf("+---------------------------------------------------+\n");
         printf(">> Xin moi chon chuc nang (1-5): ");
         scanf("%d", &chon);
-        getchar();
+        getchar(); // Đọc bỏ ký tự '\n' còn sót lại
+
         switch (chon)
         {
         case 1:
@@ -78,11 +116,15 @@ int main()
             break;
 
         case 2:
-        kiemTraDangNhap();
-        break;
+            kiemTraDangNhap();
+            break;
+
+        case 3:
+            sapXepChuoi(); 
+            break;
 
         case 5:
-            printf("Tam biet");
+            printf("Tam biet\n");
             break;
 
         default:
