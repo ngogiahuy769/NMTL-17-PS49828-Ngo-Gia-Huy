@@ -11,12 +11,17 @@ void demNguyenAmPhuAm()
     printf("Hay nhap vao 1 chuoi ky tu: ");
     fgets(s, sizeof(s), stdin);
 
-    for (int i = 0; s[i] != '\0'; i++){
+    for (int i = 0; s[i] != '\0'; i++)
+    {
         char c = tolower(s[i]);
-        if (isalpha(c)){
-            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'){
+        if (isalpha(c))
+        {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+            {
                 demNA++;
-            }else{
+            }
+            else
+            {
                 demPA++;
             }
         }
@@ -24,6 +29,28 @@ void demNguyenAmPhuAm()
 
     printf("So luong nguyen am: %d\n", demNA);
     printf("So luong phu am   : %d\n", demPA);
+}
+
+void kiemTraDangNhap()
+{
+    char userSys[] = "admin";
+    char passSys[] = "123456";
+    char user[50];
+    char pass[50];
+    printf("\nCHỨC NĂNG DĂNG NHẬP\n");
+    printf("Nhập Username: ");
+    scanf("%s", user);
+    printf("Nhập Password: ");
+    scanf("%s", pass);
+    if (strcmp(user, userSys) == 0 && strcmp(pass, passSys) == 0)
+    {
+        printf("-> Đăng nhập thành công!\n");
+    }
+    else
+    {
+        printf("-> Username hoặc Password không chính xác!\n");
+    }
+}
 }
 
 int main()
@@ -47,8 +74,12 @@ int main()
         switch (chon)
         {
         case 1:
-         demNguyenAmPhuAm();
-         break;
+            demNguyenAmPhuAm();
+            break;
+
+        case 2:
+        kiemTraDangNhap();
+        break;
 
         case 5:
             printf("Tam biet");
