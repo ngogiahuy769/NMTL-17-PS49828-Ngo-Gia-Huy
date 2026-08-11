@@ -40,10 +40,9 @@ void kiemTraDangNhap()
 
     printf("\nCHỨC NĂNG ĐĂNG NHẬP\n");
     printf("Nhập Username: ");
-    scanf("%s", user);
+    fgets(user, sizeof(user), stdin);
     printf("Nhập Password: ");
-    scanf("%s", pass);
-
+    fgets(pass, sizeof(pass), stdin);
     if (strcmp(user, userSys) == 0 && strcmp(pass, passSys) == 0)
     {
         printf("-> Đăng nhập thành công!\n");
